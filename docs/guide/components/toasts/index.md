@@ -22,6 +22,13 @@ rebootBmc() {
   .catch(({ message }) => this.errorToast(message));
 }
 
+shutdownBmc() {
+  this.$store
+  .dispatch('controls/shutdownBmc')
+  .then(message => this.successToast(message))
+  .catch(({ message }) => this.errorToast(message));
+}
+
 // Methods used in this example
 methods: {
   makeSuccessToast() {

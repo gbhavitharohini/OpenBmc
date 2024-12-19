@@ -124,6 +124,7 @@
         "postCodeLogs": "@:appPageTitle.postCodeLogs",
         "powerRestorePolicy": "@:appPageTitle.powerRestorePolicy",
         "rebootBmc": "@:appPageTitle.rebootBmc",
+        "shutdownBmc": "@:appPageTitle.shutdownBmc",
         "policies": "@:appPageTitle.policies",
         "sensors": "@:appPageTitle.sensors",
         "serialOverLan": "SOL console",
@@ -155,6 +156,7 @@
         "powerRestorePolicy": "Power restore policy",
         "profileSettings": "Profile settings",
         "rebootBmc": "Reboot BMC",
+        "shutdownBmc": "Shutdown BMC",
         "policies": "Policies",
         "sensors": "Sensors",
         "serialOverLan": "Serial over LAN (SOL) console",
@@ -797,6 +799,19 @@
             "successRebootStart": "Rebooting BMC."
         }
     },
+    "pageShutdownBmc": {
+        "lastShutdown": "Last BMC shutdown",
+        "shutdownBmc": "Shutdown BMC",
+        "shutdownInformation": "When you shut down the BMC, your web browser loses contact with the Bmc.",
+        "modal": {
+            "confirmMessage": "Are you sure you want to shut down the BMC?",
+            "confirmTitle": "Confirm BMC shutdown"
+        },
+        "toast": {
+            "errorShutdownStart": "Error shutting down BMC.",
+            "successShutdownStart": "Shutting down BMC."
+        }
+    },
     "pagePolicies": {
         "ipmi": "Network IPMI (out-of-band IPMI)",
         "ipmiDescription": "Allow remote management of the platform via IPMI. Tools such as ipmitool require this setting to be enabled.",
@@ -898,7 +913,7 @@
         "powerOn": "Power on",
         "reboot": "Reboot",
         "rebootServer": "Reboot server",
-        "shutDown": "Shut down",
+        "shutdown": "Shut down",
         "shutdownServer": "Shutdown server",
         "bootSettings": {
             "bootSettingsOverride": "Boot settings override",

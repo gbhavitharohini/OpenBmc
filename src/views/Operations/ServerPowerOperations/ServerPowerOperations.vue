@@ -160,7 +160,7 @@
                 type="submit"
                 data-test-id="serverPowerOperations-button-shutDown"
               >
-                {{ $t('pageServerPowerOperations.shutDown') }}
+                {{ $t('pageServerPowerOperations.shutdown') }}
               </b-button>
             </b-form>
           </template>

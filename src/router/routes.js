@@ -20,6 +20,7 @@ import PostCodeLogs from '@/views/Logs/PostCodeLogs';
 import PowerRestorePolicy from '@/views/Settings/PowerRestorePolicy';
 import ProfileSettings from '@/views/ProfileSettings';
 import RebootBmc from '@/views/Operations/RebootBmc';
+import ShutdownBmc from '@/views/Operations/ShutdownBmc';
 import Policies from '@/views/SecurityAndAccess/Policies';
 import KeyClear from '@/views/Operations/KeyClear';
 import Sensors from '@/views/HardwareStatus/Sensors';
@@ -50,6 +51,7 @@ const routes = [
         component: Login,
         meta: {
           title: i18n.global.t('appPageTitle.login'),
+          requiresAuth: false,
         },
       },
       {
@@ -58,7 +60,7 @@ const routes = [
         component: ChangePassword,
         meta: {
           title: i18n.global.t('appPageTitle.changePassword'),
-          requiresAuth: true,
+          requiresAuth: false,
         },
       },
     ],
@@ -67,7 +69,7 @@ const routes = [
     path: '/console',
     component: ConsoleLayout,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
     children: [
       {
@@ -91,7 +93,7 @@ const routes = [
   {
     path: '/',
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
     component: AppLayout,
     children: [
@@ -261,6 +263,14 @@ const routes = [
         component: RebootBmc,
         meta: {
           title: i18n.global.t('appPageTitle.rebootBmc'),
+        },
+      },
+      {
+        path: '/operations/shutdown-bmc',
+        name: 'shutdown-bmc',
+        component: ShutdownBmc,
+        meta: {
+          title: i18n.global.t('appPageTitle.shutdownBmc'),
         },
       },
       {

@@ -90,6 +90,11 @@ const AppNavigationMixin = {
               route: '/operations/reboot-bmc',
             },
             {
+              id: 'shutdown-bmc',
+              label: i18n.global.t('appNavigation.shutdownBmc'),
+              route: '/operations/shutdown-bmc',
+            },
+            {
               id: 'serial-over-lan',
               label: i18n.global.t('appNavigation.serialOverLan'),
               route: '/operations/serial-over-lan',

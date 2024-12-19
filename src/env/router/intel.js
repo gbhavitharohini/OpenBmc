@@ -17,6 +17,7 @@ import PageNotFound from '@/views/PageNotFound';
 import PostCodeLogs from '@/views/Logs/PostCodeLogs';
 import ProfileSettings from '@/views/ProfileSettings';
 import RebootBmc from '@/views/Operations/RebootBmc';
+import ShutdownBmc from '@/views/Operations/ShutdownBmc';
 import Policies from '@/views/SecurityAndAccess/Policies';
 import Sensors from '@/views/HardwareStatus/Sensors';
 import SerialOverLan from '@/views/Operations/SerialOverLan';
@@ -216,6 +217,14 @@ const routes = [
         component: RebootBmc,
         meta: {
           title: i18n.t('appPageTitle.rebootBmc'),
+        },
+      },
+      {
+        path: '/operations/shutdown-bmc',
+        name: 'shutdown-bmc',
+        component: ShutdownBmc,
+        meta: {
+          title: i18n.t('appPageTitle.shutdownBmc'),
         },
       },
       {

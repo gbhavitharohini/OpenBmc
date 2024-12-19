@@ -34,6 +34,7 @@ const ControlStore = {
     isOperationInProgress: false,
     lastPowerOperationTime: null,
     lastBmcRebootTime: null,
+    lastShutdownTime: null,
   },
   getters: {
     isOperationInProgress: (state) => state.isOperationInProgress,
@@ -83,6 +84,34 @@ const ControlStore = {
           console.log(error);
           throw new Error(
             i18n.global.t('pageRebootBmc.toast.errorRebootStart'),
+          );
+        });
+    },
+    async getLastShutdownTime({ commit }) {
+      // New action
+      return await api
+        .get(`${await this.dispatch('global/getSystemPath')}/shutdown`) // Adjust the endpoint as necessary
+        .then((response) => {
+          const lastShutdown = response.data.LastShutdownTime; // Adjust based on your API response
+          if (lastShutdown) {
+            const lastShutdownTime = new Date(lastShutdown);
+            commit('setLastShutdownTime', lastShutdownTime); // Commit the mutation
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    async shutdownBmc() {
+      const data = { ResetType: 'ForceShutdown' };
+      return await api
+        .post(
+          `${await this.dispatch('global/getBmcPath')}/Actions/Manager.Reset`,
+          data,
+        )
+        .then(() => i18n.global.t('pageShutdownBmc.toast.successShutdownStart'))
+        .catch((error) => {
+          console.log(error);
+          throw new Error(
+            i18n.global.t('pageShutdownBmc.toast.errorShutdownStart'),
           );
         });
     },

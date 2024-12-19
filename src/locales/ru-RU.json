@@ -124,6 +124,7 @@
         "postCodeLogs": "@:appPageTitle.postCodeLogs",
         "powerRestorePolicy": "@:appPageTitle.powerRestorePolicy",
         "rebootBmc": "@:appPageTitle.rebootBmc",
+        "shutdownBmc": "@:appPageTitle.shutdownBmc",
         "policies": "@:appPageTitle.policies",
         "sensors": "@:appPageTitle.sensors",
         "serialOverLan": "Консоль SOL",
@@ -155,6 +156,7 @@
         "powerRestorePolicy": "Действие при восстановлении питания",
         "profileSettings": "Настройки профиля",
         "rebootBmc": "Перезапуск BMC",
+        "shutdownBmc": "Отключение BMC",
         "policies": "Политики безопасности",
         "sensors": "Датчики",
         "serialOverLan": "Консоль Serial over LAN (SOL)",
@@ -783,6 +785,20 @@
             "successRebootStart": "Перезапуск BMC."
         }
     },
+    "pageShutdownBmc": {
+        "lastShutdown": "Последнее отключение BMC",
+        "shutdownBmc": "Отключить BMC",
+        "shutdownInformation": "При отключении BMC веб-браузер не сможет соединиться с BMC в течение нескольких минут. Когда BMC будет доступен, вам понадобится снова войти в систему.",
+        "modal": {
+            "confirmMessage": "Вы уверены, что хотите отключить BMC?",
+            "confirmTitle": "Подтвердить отключение BMC"
+        },
+        "toast": {
+            "errorShutdownStart": "Ошибка отключения BMC.",
+            "successShutdownStart": "Отключение BMC."
+        }
+    },
+
     "pagePolicies": {
         "ipmi": "Сетевой IPMI (out-of-band IPMI)",
         "ipmiDescription": "Разрешить удаленное управление платформой через IPMI. Такие иструменты, как ipmitool требуют включения этой функции.",
@@ -884,7 +900,7 @@
         "powerOn": "Включить",
         "reboot": "Перезапустить",
         "rebootServer": "Перезапустить сервер",
-        "shutDown": "Выключить",
+        "shutdown": "Выключить",
         "shutdownServer": "Выключить сервер",
         "bootSettings": {
             "bootSettingsOverride": "Переопределение параметров загрузки сервера",

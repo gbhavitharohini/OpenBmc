@@ -10,16 +10,16 @@ const HOST_STATE = {
 const serverStateMapper = (hostState) => {
   switch (hostState) {
     case HOST_STATE.on:
-    case 'On': // Redfish PowerState
+    case 'On':
       return 'on';
     case HOST_STATE.off:
-    case 'Off': // Redfish PowerState
+    case 'Off':
       return 'off';
     case HOST_STATE.error:
-    case 'Quiesced': // Redfish Status
+    case 'Quiesced':
       return 'error';
     case HOST_STATE.diagnosticMode:
-    case 'InTest': // Redfish Status
+    case 'InTest':
       return 'diagnosticMode';
     default:
       return 'unreachable';
@@ -78,62 +78,69 @@ const GlobalStore = {
   },
   actions: {
     async getBmcPath() {
-      const serviceRoot = await api
-        .get('/redfish/v1')
-        .catch((error) => console.log(error));
-      let bmcPath = serviceRoot?.data?.ManagerProvidingService?.['@odata.id'];
-      if (!bmcPath) {
-        const managers = await api
-          .get('/redfish/v1/Managers')
-          .catch((error) => console.log(error));
-        bmcPath = managers.data?.Members?.[0]?.['@odata.id'];
+      try {
+        const serviceRoot = await api.get('/redfish/v1');
+        const bmcPath =
+          serviceRoot?.data?.ManagerProvidingService?.['@odata.id'];
+        if (!bmcPath) {
+          const managers = await api.get('/redfish/v1/Managers');
+          const managerPath = managers?.data?.Members?.[0]?.['@odata.id'];
+          if (!managerPath) {
+            throw new Error('No BMC path found');
+          }
+          return managerPath;
+        }
+        return bmcPath;
+      } catch (error) {
+        console.error('Error fetching BMC path:', error);
       }
-      return bmcPath;
     },
     async getSystemPath() {
-      const systems = await api
-        .get('/redfish/v1/Systems')
-        .catch((error) => console.log(error));
-      let systemPath = systems?.data?.Members?.[0]?.['@odata.id'];
-      return systemPath;
+      try {
+        const systems = await api.get('/redfish/v1/Systems');
+        const systemPath = systems?.data?.Members?.[0]?.['@odata.id'];
+        if (!systemPath) {
+          throw new Error('No system path found');
+        }
+        return systemPath;
+      } catch (error) {
+        console.error('Error fetching system path:', error);
+      }
     },
     async getBmcTime({ commit }) {
-      return await api
-        .get(`${await this.dispatch('global/getBmcPath')}`)
-        .then((response) => {
-          const bmcDateTime = response.data.DateTime;
-          const date = new Date(bmcDateTime);
-          commit('setBmcTime', date);
-        })
-        .catch((error) => console.log(error));
+      try {
+        const bmcPath = await this.dispatch('global/getBmcPath');
+        const response = await api.get(bmcPath);
+        const bmcDateTime = response.data.DateTime;
+        const date = new Date(bmcDateTime);
+        commit('setBmcTime', date);
+      } catch (error) {
+        console.error('Error fetching BMC time:', error);
+      }
     },
     async getSystemInfo({ commit }) {
-      api
-        .get(`${await this.dispatch('global/getSystemPath')}`)
-        .then(
-          ({
-            data: {
-              AssetTag,
-              Model,
-              PowerState,
-              SerialNumber,
-              Status: { State } = {},
-            },
-          } = {}) => {
-            commit('setAssetTag', AssetTag);
-            commit('setSerialNumber', SerialNumber);
-            commit('setModelType', Model);
-            if (State === 'Quiesced' || State === 'InTest') {
-              // OpenBMC's host state interface is mapped to 2 Redfish
-              // properties "Status""State" and "PowerState". Look first
-              // at State for certain cases.
-              commit('setServerStatus', State);
-            } else {
-              commit('setServerStatus', PowerState);
-            }
-          },
-        )
-        .catch((error) => console.log(error));
+      try {
+        const systemPath = await this.dispatch('global/getSystemPath');
+        const response = await api.get(systemPath);
+        const {
+          AssetTag,
+          Model,
+          PowerState,
+          SerialNumber,
+          Status: { State } = {},
+        } = response.data;
+
+        commit('setAssetTag', AssetTag);
+        commit('setSerialNumber', SerialNumber);
+        commit('setModelType', Model);
+        if (State === 'Quiesced' || State === 'InTest') {
+          commit('setServerStatus', State);
+        } else {
+          commit('setServerStatus', PowerState);
+        }
+      } catch (error) {
+        console.error('Error fetching system info:', error);
+      }
     },
   },
 };
