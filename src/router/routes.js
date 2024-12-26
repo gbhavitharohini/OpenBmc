@@ -24,6 +24,7 @@ import ShutdownBmc from '@/views/Operations/ShutdownBmc';
 import Policies from '@/views/SecurityAndAccess/Policies';
 import KeyClear from '@/views/Operations/KeyClear';
 import Sensors from '@/views/HardwareStatus/Sensors';
+import Test from '@/views/HardwareStatus/Test';
 import SerialOverLan from '@/views/Operations/SerialOverLan';
 import SerialOverLanConsole from '@/views/Operations/SerialOverLan/SerialOverLanConsole';
 import ServerPowerOperations from '@/views/Operations/ServerPowerOperations';
@@ -143,6 +144,14 @@ const routes = [
         component: Sensors,
         meta: {
           title: i18n.global.t('appPageTitle.sensors'),
+        },
+      },
+      {
+        path: '/hardware-status/test',
+        name: 'test',
+        component: Test,
+        meta: {
+          title: i18n.global.t('appPageTitle.test'),
         },
       },
       {

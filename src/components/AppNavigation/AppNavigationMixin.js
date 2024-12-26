@@ -66,6 +66,11 @@ const AppNavigationMixin = {
               label: i18n.global.t('appNavigation.sensors'),
               route: '/hardware-status/sensors',
             },
+            {
+              id: 'Test',
+              label: i18n.global.t('appNavigation.test'),
+              route: '/hardware-status/test',
+            },
           ],
         },
         {
