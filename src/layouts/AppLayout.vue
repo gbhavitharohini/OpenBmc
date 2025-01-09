@@ -94,11 +94,12 @@ export default {
 }
 
 .app-content {
+  background-color: rgb(168, 210, 185);
   grid-area: content;
-  background-image: url('@/assets/images/background_image.jfif');
-  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 .app-content::before {
   content: '';
@@ -106,9 +107,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 100%;
-  background-color: #b0cffb80; /* Adjust the alpha value (0.0 to 1.0) for transparency */
+  bottom: 0; /* Adjust the alpha value (0.0 to 1.0) for transparency */
   z-index: 1; /* Ensure the overlay is above the background image */
 }
 .app-content > * {

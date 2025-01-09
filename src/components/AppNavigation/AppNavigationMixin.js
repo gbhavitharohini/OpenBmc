@@ -1,4 +1,5 @@
-import IconDashboard from '@carbon/icons-vue/es/dashboard/16';
+import IconOverview from '@carbon/icons-vue/es/overview/16';
+import Laptop16 from '@carbon/icons-vue/es/laptop/16';
 import IconTextLinkAnalysis from '@carbon/icons-vue/es/text-link--analysis/16';
 import IconDataCheck from '@carbon/icons-vue/es/data--check/16';
 import IconSettingsAdjust from '@carbon/icons-vue/es/settings--adjust/16';
@@ -16,7 +17,8 @@ const roles = {
 
 const AppNavigationMixin = {
   components: {
-    iconOverview: IconDashboard,
+    IconOverview: IconOverview,
+    Laptop16: Laptop16,
     iconLogs: IconTextLinkAnalysis,
     iconHealth: IconDataCheck,
     iconControl: IconSettingsAdjust,
@@ -33,6 +35,18 @@ const AppNavigationMixin = {
           label: i18n.global.t('appNavigation.overview'),
           route: '/',
           icon: 'iconOverview',
+        },
+        {
+          id: 'system',
+          label: i18n.global.t('appNavigation.system'),
+          icon: 'Laptop16',
+          children: [
+            {
+              id: 'component-info',
+              label: i18n.global.t('appNavigation.componentInfo'),
+              route: '/system/component-info',
+            },
+          ],
         },
         {
           id: 'logs',

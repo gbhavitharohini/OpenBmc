@@ -11,7 +11,7 @@
             {{ $t('global.status.notAvailable') }}
           </dd>
           <dd v-else>{{ powerConsumptionValue }} W</dd>
-          <dt>{{ $t('pageOverview.powerCap') }}</dt>
+          <dt>{{ $t('pageDashbpard.powerCap') }}</dt>
           <dd v-if="powerCapValue == null">
             {{ $t('global.status.disabled') }}
           </dd>
@@ -31,7 +31,7 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'Power',
   components: {
-    OverviewCard,
+    OverviewCard: OverviewCard,
   },
   mixins: [DataFormatterMixin],
   data() {

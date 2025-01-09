@@ -4,6 +4,7 @@ import Sessions from '@/views/SecurityAndAccess/Sessions';
 import ConsoleLayout from '@/layouts/ConsoleLayout.vue';
 import DateTime from '@/views/Settings/DateTime';
 import EventLogs from '@/views/Logs/EventLogs';
+import ComponentInfo from '@/views/System/ComponentInfo';
 import Firmware from '@/views/Operations/Firmware';
 import Inventory from '@/views/HardwareStatus/Inventory';
 import Kvm from '@/views/Operations/Kvm';
@@ -105,6 +106,14 @@ const routes = [
         component: ProfileSettings,
         meta: {
           title: i18n.t('appPageTitle.profileSettings'),
+        },
+      },
+      {
+        path: '/system/component-info',
+        name: 'component-info',
+        component: ComponentInfo,
+        meta: {
+          title: i18n.t('appPageTitle.componentInfo'),
         },
       },
       {

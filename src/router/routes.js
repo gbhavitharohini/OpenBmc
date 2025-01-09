@@ -3,6 +3,7 @@ import ChangePassword from '@/views/ChangePassword';
 import ConsoleLayout from '@/layouts/ConsoleLayout.vue';
 import DateTime from '@/views/Settings/DateTime';
 import EventLogs from '@/views/Logs/EventLogs';
+import ComponentInfo from '@/views/System/ComponentInfo';
 import FactoryReset from '@/views/Operations/FactoryReset';
 import Firmware from '@/views/Operations/Firmware';
 import Inventory from '@/views/HardwareStatus/Inventory';
@@ -112,6 +113,14 @@ const routes = [
         component: ProfileSettings,
         meta: {
           title: i18n.global.t('appPageTitle.profileSettings'),
+        },
+      },
+      {
+        path: '/system/component-info',
+        name: 'component-info',
+        component: ComponentInfo,
+        meta: {
+          title: i18n.global.t('appPageTitle.componentInfo'),
         },
       },
       {

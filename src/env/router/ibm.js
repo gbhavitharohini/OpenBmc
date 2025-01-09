@@ -4,6 +4,7 @@ import Sessions from '@/views/SecurityAndAccess/Sessions';
 import ConsoleLayout from '@/layouts/ConsoleLayout.vue';
 import DateTime from '@/views/Settings/DateTime';
 import EventLogs from '@/views/Logs/EventLogs';
+import ComponentInfo from '@/views/System/ComponentInfo';
 import FactoryReset from '@/views/Operations/FactoryReset';
 import Firmware from '@/views/Operations/Firmware';
 import Inventory from '@/views/HardwareStatus/Inventory';
@@ -31,6 +32,7 @@ import i18n from '@/i18n';
 
 // Custom components
 import Dumps from '@/views/Logs/Dumps';
+import { component } from 'vue/types/umd';
 
 const routes = [
   {
@@ -110,6 +112,14 @@ const routes = [
         component: EventLogs,
         meta: {
           title: i18n.t('appPageTitle.eventLogs'),
+        },
+      },
+      {
+        path: '/system/component-info',
+        name: 'component-info',
+        component: ComponentInfo,
+        meta: {
+          title: i18n.t('appPageTitle.componentInfo'),
         },
       },
       {

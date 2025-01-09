@@ -38,7 +38,7 @@ import { useI18n } from 'vue-i18n';
 
 export default {
   name: 'Events',
-  components: { OverviewCard, StatusIcon },
+  components: { OverviewCard: OverviewCard, StatusIcon },
   mixins: [DataFormatterMixin],
   data() {
     return {

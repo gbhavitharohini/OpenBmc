@@ -88,14 +88,13 @@ const ControlStore = {
         });
     },
     async getLastShutdownTime({ commit }) {
-      // New action
       return await api
-        .get(`${await this.dispatch('global/getSystemPath')}/shutdown`) // Adjust the endpoint as necessary
+        .get(`${await this.dispatch('global/getSystemPath')}/shutdown`)
         .then((response) => {
-          const lastShutdown = response.data.LastShutdownTime; // Adjust based on your API response
+          const lastShutdown = response.data.LastShutdownTime;
           if (lastShutdown) {
             const lastShutdownTime = new Date(lastShutdown);
-            commit('setLastShutdownTime', lastShutdownTime); // Commit the mutation
+            commit('setLastShutdownTime', lastShutdownTime);
           }
         })
         .catch((error) => console.log(error));

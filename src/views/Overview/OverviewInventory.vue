@@ -35,7 +35,7 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'Inventory',
   components: {
-    OverviewCard,
+    OverviewCard: OverviewCard,
   },
   mixins: [BVToastMixin],
   data() {

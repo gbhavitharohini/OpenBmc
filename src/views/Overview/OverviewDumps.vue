@@ -26,7 +26,7 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'Dumps',
   components: {
-    OverviewCard,
+    OverviewCard: OverviewCard,
   },
   mixins: [DataFormatterMixin],
   data() {

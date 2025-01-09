@@ -31,7 +31,7 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'Server',
   components: {
-    OverviewCard,
+    OverviewCard: OverviewCard,
   },
   mixins: [DataFormatterMixin],
   data() {

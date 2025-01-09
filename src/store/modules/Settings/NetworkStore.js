@@ -54,7 +54,7 @@ const NetworkStore = {
           hostname: HostName,
           macAddress: MACAddress,
           linkStatus: LinkStatus,
-          staticAddress: IPv4StaticAddresses[0]?.Address, // Display first static address on overview page
+          staticAddress: IPv4StaticAddresses[0]?.Address, // Display first static address on Overview/Dashboard page
           ipv6StaticAddress: IPv6StaticAddresses[0]?.Address,
           useDnsEnabled: DHCPv4.UseDNSServers,
           useDomainNameEnabled: DHCPv4.UseDomainName,

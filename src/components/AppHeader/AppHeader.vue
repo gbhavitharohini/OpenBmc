@@ -38,7 +38,7 @@
             <img
               svg-inline
               class="header-logo"
-              src="@/assets/images/logo-header.svg"
+              src="@/assets/images/krutrim-logo.svg"
               :alt="altLogo"
             />
           </b-navbar-brand>
@@ -272,7 +272,7 @@ export default {
   .navbar-text,
   .nav-link,
   .btn-link {
-    color: color('white') !important;
+    color: black !important;
     fill: currentColor;
     padding: 0.68rem 1rem !important;
 
